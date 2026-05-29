@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR英语口语练习</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #F7F5F0;
+  --bg2:      #EFECEA;
+  --surface:  #FFFFFF;
+  --border:   #E0DDD8;
+  --border2:  #D0CCC5;
+  --text:     #1C1A17;
+  --text2:    #7A7570;
+  --text3:    #B0ABA4;
+  --accent:   #2D6A4F;
+  --accent-l: #D8EDDF;
+  --accent2:  #B7534A;
+  --gold:     #C9A84C;
+  --gold-l:   #FDF3DC;
+  --warn:     #E07B39;
+  --warn-l:   #FEF0E6;
+  --good:     #2D6A4F;
+  --good-l:   #D8EDDF;
+  --r:        14px;
+  --r2:       20px;
+  --shadow:   0 2px 16px rgba(28,26,23,.07);
+  --shadow2:  0 4px 32px rgba(28,26,23,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  font-weight:400;
+  min-height:100vh;
+  line-height:1.5;
+}
+
+/* ── SCREENS ── */
+.screen{display:none;height:100vh;overflow:hidden;}
+.screen.active{display:flex;flex-direction:column;}
+#screen-home{padding:0;}
+.home-body{padding:1.4rem;display:flex;flex-direction:column;gap:1.4rem;max-width:640px;margin:0 auto;width:100%;overflow-y:auto;flex:1;}
+.overview-body{padding:1.2rem;max-width:640px;margin:0 auto;width:100%;overflow-y:auto;flex:1;}
+.practice-body{padding:1.2rem;max-width:640px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:1rem;overflow-y:auto;flex:1;}
+
+/* ─────────────────────────────────────────────
+   LOGIN
+───────────────────────────────────────────── */
+#screen-login{
+  background: linear-gradient(160deg,#EAF4EE 0%,#F7F5F0 45%,#FDF3DC 100%);
+  align-items:center;justify-content:center;padding:2rem;
+}
+.login-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent-l);color:var(--accent);
+  border-radius:20px;padding:4px 14px;font-size:.75rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem;
+}
+.login-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,6vw,3rem);
+  line-height:1.15;color:var(--text);margin-bottom:.5rem;
+}
+.login-title em{font-style:italic;color:var(--accent);}
+.login-sub{color:var(--text2);font-size:.9rem;margin-bottom:2.5rem;line-height:1.6;}
+.field-label{font-size:.78rem;font-weight:600;color:var(--text2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem;}
+.input-wrap{position:relative;margin-bottom:1rem;}
+.input-field{
+  width:100%;background:var(--surface);
+  border:1.5px solid var(--border);border-radius:var(--r);
+  padding:.85rem 1.1rem;color:var(--text);
+  font-family:'Outfit',sans-serif;font-size:1rem;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.input-field:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,106,79,.1);}
+.btn-primary{
+  width:100%;background:var(--accent);color:#fff;
+  border:none;border-radius:var(--r);padding:.9rem;
+  font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;
+  cursor:pointer;transition:all .2s;letter-spacing:.02em;
+}
+.btn-primary:hover{background:#245a41;box-shadow:0 4px 16px rgba(45,106,79,.3);}
+.btn-primary:active{transform:scale(.98);}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;box-shadow:none;}
+
+/* ─────────────────────────────────────────────
+   HOME
+───────────────────────────────────────────── */
+.home-header{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;
+}
+.home-logo{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--accent-l);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;flex-shrink:0;padding:0;
+}
+.home-logo:hover{background:#c5e8d0;border-color:var(--accent);}
+.header-right{display:flex;align-items:center;gap:.7rem;}
+.streak-pill{
+  background:var(--gold-l);color:var(--gold);
+  border-radius:20px;padding:.25rem .8rem;
+  font-size:.78rem;font-weight:600;
+}
+.user-chip{
+  background:var(--bg2);border-radius:20px;
+  padding:.25rem .8rem;font-size:.82rem;color:var(--text2);
+}
+
+.progress-card{
+  background:linear-gradient(135deg,var(--accent) 0%,#1d4d38 100%);
+  border-radius:var(--r2);padding:1.4rem 1.6rem;color:#fff;
+}
+.prog-big-row{display:flex;align-items:baseline;gap:.4rem;margin-bottom:.15rem;}
+.prog-big-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;line-height:1;}
+.prog-big-sep{font-size:1.4rem;opacity:.5;}
+.prog-big-total{font-family:'Playfair Display',serif;font-size:1.6rem;opacity:.7;line-height:1;}
+.prog-big-pct{
+  margin-left:auto;font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;opacity:.9;
+}
+.prog-big-lbl{font-size:.75rem;opacity:.6;letter-spacing:.04em;}
+.prog-bar-bg{background:rgba(255,255,255,.2);border-radius:4px;height:6px;}
+.prog-bar-fill{background:#fff;height:100%;border-radius:4px;transition:width .6s ease;}
+.prog-streak{font-size:.75rem;opacity:.65;margin-top:.45rem;}
+
+.section-label{
+  font-size:.72rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text3);
+}
+.module-list{display:flex;flex-direction:column;gap:.7rem;}
+.module-row{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:1rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;
+  cursor:pointer;transition:all .2s;
+}
+.module-row:hover{border-color:var(--accent);box-shadow:var(--shadow);}
+.module-row:active{transform:scale(.99);}
+.module-row.done{border-color:var(--accent-l);background:linear-gradient(90deg,#F2FAF5,#fff);}
+.mod-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;background:var(--bg2);
+}
+.module-row.done .mod-icon{background:var(--accent-l);}
+.mod-info{flex:1;min-width:0;}
+.mod-name{font-weight:600;font-size:.95rem;}
+.mod-meta{font-size:.75rem;color:var(--text2);margin-top:.15rem;}
+.mod-badge{
+  font-size:.7rem;font-weight:600;padding:.2rem .6rem;border-radius:10px;
+  flex-shrink:0;
+}
+.mod-badge.done{background:var(--accent-l);color:var(--accent);}
+.mod-badge.todo{background:var(--bg2);color:var(--text3);}
+
+/* ─────────────────────────────────────────────
+   MODULE OVERVIEW (sentence list)
+───────────────────────────────────────────── */
+.overview-header{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;
+  position:sticky;top:0;z-index:10;
+}
+.btn-back{
+  background:var(--bg2);border:none;border-radius:10px;
+  color:var(--text);padding:.45rem .9rem;font-family:'Outfit',sans-serif;
+  font-size:.85rem;cursor:pointer;font-weight:500;transition:all .2s;
+  flex-shrink:0;
+}
+.btn-back:hover{background:var(--border);}
+.overview-title{font-weight:600;font-size:1rem;}
+.ov-module-banner{
+  background:linear-gradient(135deg,var(--accent),#1d4d38);
+  border-radius:var(--r2);padding:1.2rem 1.4rem;color:#fff;
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;
+}
+.ov-icon{font-size:2rem;}
+.ov-module-name{font-family:'Playfair Display',serif;font-size:1.4rem;}
+.ov-module-count{font-size:.8rem;opacity:.7;margin-top:.1rem;}
+
+.sentence-list{display:flex;flex-direction:column;gap:.6rem;}
+.sentence-row{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:.9rem 1.1rem;
+  display:flex;align-items:center;gap:.9rem;
+  cursor:pointer;transition:all .2s;
+}
+.sentence-row:hover{border-color:var(--accent);box-shadow:var(--shadow);}
+.sentence-row:active{transform:scale(.99);}
+.sentence-row.completed{border-color:var(--accent-l);background:#F9FDF9;}
+.s-num{
+  width:28px;height:28px;border-radius:8px;
+  background:var(--bg2);color:var(--text2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:600;flex-shrink:0;
+}
+.sentence-row.completed .s-num{background:var(--accent);color:#fff;}
+.s-content{flex:1;min-width:0;}
+.s-en{font-size:.9rem;font-weight:500;line-height:1.4;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.s-cn{font-size:.75rem;color:var(--text2);margin-top:.15rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.s-score{
+  font-size:.78rem;font-weight:600;flex-shrink:0;
+}
+.s-score.good{color:var(--good);}
+.s-score.ok{color:var(--warn);}
+.s-score.bad{color:var(--accent2);}
+.s-arrow{color:var(--text3);font-size:.8rem;flex-shrink:0;}
+
+.loading-sentences{
+  text-align:center;padding:3rem 1rem;color:var(--text2);
+}
+.load-spinner{
+  width:32px;height:32px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .7s linear infinite;margin:0 auto 1rem;
+}
+
+/* ─────────────────────────────────────────────
+   PRACTICE
+───────────────────────────────────────────── */
+.practice-header{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem;
+  position:sticky;top:0;z-index:10;
+}
+.practice-mod-name{font-weight:600;font-size:.9rem;}
+.s-counter{margin-left:auto;font-size:.8rem;color:var(--text2);
+  background:var(--bg2);border-radius:10px;padding:.2rem .7rem;}
+
+/* progress dots */
+.dot-row{display:flex;gap:4px;flex-wrap:wrap;}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);transition:background .3s;
+}
+.dot.done{background:var(--accent);}
+.dot.current{background:var(--gold);}
+
+.sentence-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:1.4rem;
+  display:flex;flex-direction:column;gap:.8rem;
+}
+.s-context-tag{
+  display:inline-flex;align-items:center;
+  background:var(--bg2);border-radius:8px;
+  padding:.2rem .65rem;font-size:.7rem;font-weight:600;
+  color:var(--text2);letter-spacing:.04em;width:fit-content;
+}
+.s-english{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.1rem,3.5vw,1.4rem);
+  line-height:1.6;color:var(--text);
+}
+.s-chinese{
+  font-size:.85rem;color:var(--text2);line-height:1.6;
+  padding-top:.7rem;border-top:1px solid var(--border);
+}
+
+/* speed control */
+.speed-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.speed-label{font-size:.72rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+.speed-btn{
+  padding:.2rem .6rem;border-radius:8px;border:1.5px solid var(--border);
+  background:transparent;font-family:'Outfit',sans-serif;font-size:.75rem;
+  color:var(--text2);cursor:pointer;transition:all .15s;font-weight:500;
+}
+.speed-btn:hover{border-color:var(--accent);color:var(--accent);}
+.speed-btn.active{background:var(--accent-l);border-color:var(--accent);color:var(--accent);}
+
+/* score panel */
+.score-panel{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:1.2rem;
+  display:none;flex-direction:column;gap:.8rem;
+}
+.score-panel.visible{display:flex;}
+.score-top{display:flex;align-items:center;gap:1rem;}
+.score-circle{
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;flex-shrink:0;
+  border:3px solid var(--accent);
+}
+.score-circle.great{border-color:var(--good);}
+.score-circle.ok{border-color:var(--warn);}
+.score-circle.poor{border-color:var(--accent2);}
+.score-big{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;line-height:1;}
+.score-unit{font-size:.6rem;color:var(--text2);}
+.score-right{flex:1;}
+.score-title{font-weight:600;font-size:.9rem;margin-bottom:.4rem;}
+.score-bars{display:flex;flex-direction:column;gap:.35rem;}
+.score-bar-row{display:flex;align-items:center;gap:.5rem;}
+.score-bar-lbl{font-size:.7rem;color:var(--text2);width:3rem;flex-shrink:0;}
+.score-bar-bg{flex:1;background:var(--bg2);border-radius:3px;height:5px;}
+.score-bar-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+.score-bar-val{font-size:.7rem;font-weight:600;width:1.8rem;text-align:right;flex-shrink:0;}
+
+.word-row{display:flex;flex-wrap:wrap;gap:.3rem;padding-top:.3rem;}
+.word-chip{
+  padding:.2rem .55rem;border-radius:6px;
+  font-size:.82rem;font-weight:500;
+}
+.word-chip.great{background:var(--good-l);color:var(--good);}
+.word-chip.ok{background:var(--warn-l);color:var(--warn);}
+.word-chip.poor{background:#fdecea;color:var(--accent2);}
+.word-chip.miss{background:var(--bg2);color:var(--text3);text-decoration:line-through;}
+
+/* action buttons */
+.action-row{display:flex;gap:.6rem;}
+.btn-icon{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);color:var(--text);padding:.75rem;
+  font-size:1.1rem;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;min-width:48px;
+}
+.btn-icon:hover{border-color:var(--accent);background:var(--accent-l);}
+.btn-record{
+  flex:1;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);color:var(--text);padding:.75rem 1rem;
+  font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:500;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.btn-record:hover{border-color:var(--accent2);background:#fdecea;}
+.btn-record.recording{
+  border-color:var(--accent2);background:#fdecea;color:var(--accent2);
+  animation:pulse 1s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+
+.nav-row{display:flex;gap:.6rem;}
+.btn-nav{
+  flex:1;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);color:var(--text);padding:.75rem;
+  font-family:'Outfit',sans-serif;font-size:.85rem;
+  cursor:pointer;transition:all .2s;font-weight:500;
+}
+.btn-nav:hover{border-color:var(--border2);background:var(--bg2);}
+.btn-submit-best{
+  background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;
+}
+.btn-submit-best:hover{background:#245a41;border-color:#245a41;}
+.btn-submit-best:disabled{opacity:.4;cursor:not-allowed;}
+
+/* ─────────────────────────────────────────────
+   COMPLETE
+───────────────────────────────────────────── */
+#screen-complete{
+  align-items:center;justify-content:center;padding:2rem;
+  background:linear-gradient(160deg,#EAF4EE 0%,#F7F5F0 60%);
+  text-align:center;gap:1.2rem;
+}
+.complete-emoji{font-size:3.5rem;}
+.complete-title{
+  font-family:'Playfair Display',serif;font-size:2rem;
+}
+.complete-sub{color:var(--text2);font-size:.9rem;}
+.stats-row{
+  display:flex;gap:1rem;
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r2);padding:1.2rem 2rem;
+}
+.stat-block{text-align:center;}
+.stat-v{font-family:'Playfair Display',serif;font-size:2rem;color:var(--accent);}
+.stat-l{font-size:.72rem;color:var(--text2);}
+
+/* ─────────────────────────────────────────────
+   LOADING OVERLAY
+───────────────────────────────────────────── */
+#loading{
+  position:fixed;inset:0;background:rgba(247,245,240,.88);
+  display:none;flex-direction:column;align-items:center;
+  justify-content:center;gap:.8rem;z-index:9999;backdrop-filter:blur(4px);
+}
+#loading.visible{display:flex;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{
+  width:36px;height:36px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+.loading-msg{color:var(--text2);font-size:.88rem;}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  background:var(--text);color:#fff;border-radius:20px;
+  padding:.55rem 1.2rem;font-size:.83rem;
+  opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999;
+  white-space:nowrap;
+}
+.toast.show{opacity:1;}
+
+@media(min-width:680px){
+  .home-body,.overview-body,.practice-body{padding:2rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="loading"><div class="spinner"></div><div class="loading-msg" id="loading-msg">处理中...</div></div>
+<div class="toast" id="toast"></div>
+
+<!-- ══ LOGIN ══ -->
+<div class="screen active" id="screen-login">
+  <div class="login-box">
+    <div class="login-badge">✦ HR 英语口语练习</div>
+    <h1 class="login-title">开口说<em>英语</em><br>从今天起</h1>
+    <p class="login-sub">每日坚持练习，提升商务英语口语能力</p>
+    <div class="field-label">您的姓名</div>
+    <div class="input-wrap">
+      <input class="input-field" id="name-input" type="text" placeholder="请输入姓名" autocomplete="off"/>
+    </div>
+    <button class="btn-primary" id="btn-start">开始训练 →</button>
+  </div>
+</div>
+
+<!-- ══ HOME ══ -->
+<div class="screen" id="screen-home">
+  <div class="home-header">
+    <button class="home-logo" id="btn-home-logo" title="返回首页">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- speech bubble -->
+        <path d="M3 3.5C3 2.67 3.67 2 4.5 2h13C18.33 2 19 2.67 19 3.5v9c0 .83-.67 1.5-1.5 1.5H8l-4 3.5V14H4.5C3.67 14 3 13.33 3 12.5v-9z" fill="var(--accent)" opacity="0.15"/>
+        <path d="M3 3.5C3 2.67 3.67 2 4.5 2h13C18.33 2 19 2.67 19 3.5v9c0 .83-.67 1.5-1.5 1.5H8l-4 3.5V14H4.5C3.67 14 3 13.33 3 12.5v-9z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- waveform lines -->
+        <line x1="7" y1="6.5" x2="7" y2="9.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="10" y1="5" x2="10" y2="11" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="13" y1="6.5" x2="13" y2="9.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="16" y1="7.5" x2="16" y2="8.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill">🔥 0 天</div>
+      <div class="user-chip" id="user-chip">—</div>
+    </div>
+  </div>
+  <div class="home-body">
+    <div class="progress-card">
+      <div class="prog-big-row">
+        <div class="prog-big-num" id="prog-done-num">0</div>
+        <div class="prog-big-sep">/</div>
+        <div class="prog-big-total" id="prog-total-num">0</div>
+        <div class="prog-big-pct" id="prog-pct">0%</div>
+      </div>
+      <div class="prog-big-lbl">句子练习总进度</div>
+      <div class="prog-bar-bg" style="margin-top:.9rem"><div class="prog-bar-fill" id="prog-fill" style="width:0%"></div></div>
+      <div class="prog-streak" id="prog-streak">🔥 连续打卡 0 天</div>
+    </div>
+    <div class="section-label">选择训练模块</div>
+    <div class="module-list" id="module-list">
+      <div class="loading-sentences"><div class="load-spinner"></div>加载模块中...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OVERVIEW ══ -->
+<div class="screen" id="screen-overview">
+  <div class="overview-header">
+    <button class="btn-back" id="ov-back">← 返回</button>
+    <div class="overview-title" id="ov-title">模块句子</div>
+  </div>
+  <div class="overview-body">
+    <div class="ov-module-banner" id="ov-banner">
+      <div class="ov-icon" id="ov-icon">📋</div>
+      <div>
+        <div class="ov-module-name" id="ov-name">—</div>
+        <div class="ov-module-count" id="ov-count">0 句</div>
+      </div>
+    </div>
+    <div class="sentence-list" id="sentence-list">
+      <div class="loading-sentences"><div class="load-spinner"></div>加载句子中...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRACTICE ══ -->
+<div class="screen" id="screen-practice">
+  <div class="practice-header">
+    <button class="btn-back" id="pr-back">← 列表</button>
+    <div class="practice-mod-name" id="pr-mod-name">—</div>
+    <div class="s-counter" id="s-counter">1/10</div>
+  </div>
+  <div class="practice-body">
+    <div class="dot-row" id="dot-row"></div>
+    <div class="sentence-card">
+      <div class="s-english" id="pr-english">Loading...</div>
+      <div class="s-chinese" id="pr-chinese">加载中...</div>
+      <div class="speed-row">
+        <span class="speed-label">语速</span>
+        <button class="speed-btn" data-rate="0.5">极慢</button>
+        <button class="speed-btn" data-rate="0.7">慢速</button>
+        <button class="speed-btn active" data-rate="1.0">正常</button>
+        <button class="speed-btn" data-rate="1.2">较快</button>
+        <button class="speed-btn" data-rate="1.5">快速</button>
+      </div>
+    </div>
+    <div class="score-panel" id="score-panel">
+      <div class="score-top">
+        <div class="score-circle" id="score-circle">
+          <div class="score-big" id="score-big">—</div>
+          <div class="score-unit">分</div>
+        </div>
+        <div class="score-right">
+          <div class="score-title">发音评测结果</div>
+          <div class="score-bars" id="score-bars"></div>
+        </div>
+      </div>
+      <div class="word-row" id="word-row"></div>
+    </div>
+    <div class="action-row">
+      <button class="btn-icon" id="btn-play" title="播放标准发音">🔊</button>
+      <button class="btn-record" id="btn-record">
+        <span id="rec-icon">🎤</span><span id="rec-label">点击录音</span>
+      </button>
+      <button class="btn-icon" id="btn-playback" style="display:none" title="回听录音">▶️</button>
+    </div>
+    <div class="nav-row">
+      <button class="btn-nav" id="btn-prev">← 上一句</button>
+      <button class="btn-nav" id="btn-next">下一句 →</button>
+    </div>
+    <button class="btn-nav btn-submit-best" id="btn-submit" disabled>
+      ✅ 提交今日最佳录音
+    </button>
+  </div>
+</div>
+
+<!-- ══ COMPLETE ══ -->
+<div class="screen" id="screen-complete">
+  <div class="complete-emoji">🎉</div>
+  <div class="complete-title">今日完成！</div>
+  <div class="complete-sub" id="complete-sub">练习已提交，管理员可在 Google Sheet 查看结果</div>
+  <div class="stats-row">
+    <div class="stat-block"><div class="stat-v" id="st-count">0</div><div class="stat-l">练习句数</div></div>
+    <div class="stat-block"><div class="stat-v" id="st-avg">0</div><div class="stat-l">平均分</div></div>
+    <div class="stat-block"><div class="stat-v" id="st-best">0</div><div class="stat-l">最高分</div></div>
+  </div>
+  <button class="btn-primary" id="btn-done" style="max-width:300px">返回主页</button>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════════
+const CFG = {
+  azureKey:    '9PNbpvEsKFWU75LOtIHNcq7iHHQ63tlFwXEnpgKWIvJx59lRUg5uJQQJ99CEACYeBjFXJ3w3AAAYACOGpSUs',
+  azureRegion: 'eastus',
+  cloudName:   'dmvns1hy1',
+  cloudPreset: 'hr-english-audio',
+  scriptUrl:   'https://script.google.com/macros/s/AKfycbwcRAXcF2jA1hAChPFUINeU5aDl5vlhbs0H649AQbqiaE7yQ05ebW4A-nGY1rO5gJPP/exec',
+  adminPass:   'hr2024admin',
+};
+
+
+// 模块图标内嵌映射（Sheet 无需 C 列）
+const MODULE_ICONS = {
+  vocab:        '🔤',
+  org_dev:      '🏢',
+  recruitment:  '🔍',
+  hr_admin:     '📋',
+  compensation: '💰',
+  talent:       '🌱',
+  cadre:        '⭐',
+  learning:     '📚',
+};
+const DEFAULT_ICON = '📂';
+let S = {
+  name: '',
+  streak: 0,
+  completedModules: [],   // module ids done today
+  sentenceScores: {},     // { moduleId_idx : score }
+  modules: [],            // loaded modules (from sheet or fallback)
+  curModule: null,
+  curIndex: 0,
+  scores: [],
+  recordings: [],
+  bestRec: null,
+  isRecording: false,
+  mediaRecorder: null,
+  audioChunks: [],
+  audioBlob: null,
+  ttsRate: 1.0,
+};
+
+// ════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════
+const $  = id => document.getElementById(id);
+const showScreen = id => {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  $(id).classList.add('active');
+};
+const loading = (show, msg='处理中...') => {
+  $('loading-msg').textContent = msg;
+  $('loading').classList.toggle('visible', show);
+};
+let _toastTimer;
+const toast = (msg, ms=2500) => {
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(_toastTimer); _toastTimer=setTimeout(()=>t.classList.remove('show'),ms);
+};
+const scoreClass = s => s>=80?'great':s>=60?'ok':'poor';
+const scoreLabel = s => s>=80?'🟢 发音很棒！':s>=60?'🟡 继续加油':' 🔴 需要多练';
+
+// ════════════════════════════════════════════
+// PERSIST
+// ════════════════════════════════════════════
+function saveLocal(){
+  localStorage.setItem('speakhr_'+S.name, JSON.stringify({
+    completedModules: S.completedModules,
+    sentenceScores: S.sentenceScores,
+    streak: S.streak,
+    lastDate: new Date().toDateString(),
+  }));
+}
+function loadLocal(){
+  const d = JSON.parse(localStorage.getItem('speakhr_'+S.name)||'{}');
+  S.completedModules = d.completedModules||[];
+  S.sentenceScores   = d.sentenceScores||{};
+  S.streak           = d.streak||0;
+  if(d.lastDate){
+    const today = new Date().toDateString();
+    const yest  = new Date(Date.now()-86400000).toDateString();
+    if(d.lastDate!==today && d.lastDate!==yest) S.streak=0;
+    if(d.lastDate!==today){ S.completedModules=[]; S.sentenceScores={}; } // reset daily
+  }
+}
+
+// ════════════════════════════════════════════
+// LOAD MODULES — 完全从 Google Sheet 读取
+// 使用 JSONP 绕过 CORS 限制
+// ════════════════════════════════════════════
+function loadModules(){
+  return new Promise(resolve => {
+    if(CFG.scriptUrl === 'YOUR_APPS_SCRIPT_URL_HERE'){
+      S.modules = [];
+      showSheetError('请先在 HTML 里填入 Apps Script URL');
+      resolve(); return;
+    }
+
+    const cbName = '_speakhr_cb_' + Date.now();
+    const timer  = setTimeout(()=>{
+      cleanup();
+      S.modules = [];
+      showSheetError('连接超时，请检查 Apps Script 是否已部署');
+      resolve();
+    }, 10000);
+
+    function cleanup(){
+      clearTimeout(timer);
+      delete window[cbName];
+      const s = document.getElementById('_jsonp_script');
+      if(s) s.remove();
+    }
+
+    window[cbName] = function(data){
+      cleanup();
+      if(data && data.modules && data.modules.length){
+        // 用内置图标覆盖 Sheet 传来的图标字段
+        data.modules.forEach(m => {
+          m.icon = MODULE_ICONS[m.id] || DEFAULT_ICON;
+        });
+        S.modules = data.modules;
+      } else {
+        S.modules = [];
+        const msg = data && data.note ? data.note
+          : data && data.error ? '读取出错：' + data.error
+          : '句子库为空，请在 Google Sheet「句子库」表中添加句子';
+        showSheetError(msg);
+      }
+      resolve();
+    };
+
+    const script   = document.createElement('script');
+    script.id      = '_jsonp_script';
+    script.src     = CFG.scriptUrl + '?action=getSentences&callback=' + cbName;
+    script.onerror = ()=>{
+      cleanup();
+      S.modules = [];
+      showSheetError('无法连接 Apps Script，请确认已重新部署（新版本）且权限设为「所有人」');
+      resolve();
+    };
+    document.head.appendChild(script);
+  });
+}
+
+function showSheetError(msg){
+  const list = document.getElementById('module-list');
+  if(!list) return;
+  list.innerHTML = `
+    <div style="background:#fff7f7;border:1.5px solid #f5c6c6;border-radius:14px;padding:1.2rem 1.4rem;color:#b7534a;line-height:1.6;font-size:.88rem;">
+      <div style="font-weight:700;margin-bottom:.4rem;">⚠️ 无法读取句子库</div>
+      <div>${msg}</div>
+      <div style="margin-top:.8rem;color:#7a7570;font-size:.8rem;">
+        排查步骤：<br>
+        1. Apps Script → 部署 → 管理部署 → 编辑 → 选「新版本」→ 重新部署<br>
+        2. 部署设置：执行身份「我」，访问权限「所有人」<br>
+        3. 确认 HTML 里的 scriptUrl 是最新的 /exec 链接<br>
+        4. 确认 Google Sheet 里有「句子库」这张工作表
+      </div>
+      <button onclick="location.reload()" style="margin-top:.8rem;background:#b7534a;color:#fff;border:none;border-radius:8px;padding:.4rem 1rem;font-size:.82rem;cursor:pointer;">重新加载</button>
+    </div>`;
+}
+
+// ════════════════════════════════════════════
+// LOGIN
+// ════════════════════════════════════════════
+$('btn-start').addEventListener('click', async ()=>{
+  const n = $('name-input').value.trim();
+  if(!n){ toast('请输入您的姓名'); return; }
+  S.name = n;
+  loadLocal();
+  loading(true,'加载模块数据...');
+  await loadModules();
+  loading(false);
+  renderHome();
+  showScreen('screen-home');
+});
+$('name-input').addEventListener('keypress',e=>{ if(e.key==='Enter') $('btn-start').click(); });
+$('btn-home-logo').addEventListener('click', ()=>{ renderHome(); showScreen('screen-home'); });
+
+// ════════════════════════════════════════════
+// HOME
+// ════════════════════════════════════════════
+function renderHome(){
+  $('user-chip').textContent = S.name;
+
+  // 句子级别总进度
+  const totalSentences = S.modules.reduce((a, m) => a + m.sentences.length, 0);
+  const doneSentences  = Object.keys(S.sentenceScores).length;
+  const pct = totalSentences ? Math.round(doneSentences / totalSentences * 100) : 0;
+
+  $('prog-done-num').textContent  = doneSentences;
+  $('prog-total-num').textContent = totalSentences;
+  $('prog-pct').textContent       = pct + '%';
+  $('prog-fill').style.width      = pct + '%';
+  $('prog-streak').textContent    = `🔥 连续打卡 ${S.streak} 天`;
+
+  const list = $('module-list');
+  list.innerHTML = '';
+  S.modules.forEach(m => {
+    // 算该模块已完成的句子数
+    const modDone = m.sentences.reduce((cnt, _, i) => {
+      return cnt + (S.sentenceScores[m.id+'_'+i] !== undefined ? 1 : 0);
+    }, 0);
+    const modTotal = m.sentences.length;
+    const allDone  = modDone === modTotal && modTotal > 0;
+
+    const div = document.createElement('div');
+    div.className = 'module-row' + (allDone ? ' done' : '');
+    div.innerHTML = `
+      <div class="mod-icon">${m.icon}</div>
+      <div class="mod-info">
+        <div class="mod-name">${m.name}</div>
+        <div class="mod-meta">${modDone} / ${modTotal} 句已完成</div>
+      </div>
+      <div class="mod-badge ${allDone ? 'done' : 'todo'}">${allDone ? '✓ 完成' : modDone > 0 ? '继续' : '开始'}</div>
+    `;
+    div.addEventListener('click', () => openOverview(m));
+    list.appendChild(div);
+  });
+}
+
+// ════════════════════════════════════════════
+// OVERVIEW — sentence list
+// ════════════════════════════════════════════
+function openOverview(module){
+  S.curModule = module;
+  $('ov-title').textContent = module.name;
+  $('ov-icon').textContent  = module.icon;
+  $('ov-name').textContent  = module.name;
+  $('ov-count').textContent = module.sentences.length + ' 个练习句子';
+
+  const list = $('sentence-list');
+  list.innerHTML = '';
+  module.sentences.forEach((s,i)=>{
+    const key = module.id+'_'+i;
+    const score = S.sentenceScores[key];
+    const done = score !== undefined;
+    const row = document.createElement('div');
+    row.className = 'sentence-row'+(done?' completed':'');
+    row.innerHTML = `
+      <div class="s-num">${done?'✓':i+1}</div>
+      <div class="s-content">
+        <div class="s-en">${s.en}</div>
+        <div class="s-cn">${s.cn}</div>
+      </div>
+      ${done?`<div class="s-score ${scoreClass(score)}">${score}分</div>`:''}
+      <div class="s-arrow">›</div>
+    `;
+    row.addEventListener('click',()=>startPractice(module, i));
+    list.appendChild(row);
+  });
+
+  showScreen('screen-overview');
+}
+
+$('ov-back').addEventListener('click',()=>{ renderHome(); showScreen('screen-home'); });
+
+// ════════════════════════════════════════════
+// PRACTICE
+// ════════════════════════════════════════════
+function startPractice(module, startIndex=0){
+  S.curModule  = module;
+  S.curIndex   = startIndex;
+  S.scores     = [];
+  S.recordings = [];
+  S.bestRec    = null;
+  S.audioBlob  = null;
+  $('btn-submit').disabled = true;
+  renderDots();
+  renderPracticeSentence();
+  showScreen('screen-practice');
+}
+
+function renderDots(){
+  const row = $('dot-row'); row.innerHTML='';
+  S.curModule.sentences.forEach((_,i)=>{
+    const d=document.createElement('div');
+    const key=S.curModule.id+'_'+i;
+    d.className='dot'+(i===S.curIndex?' current':(S.sentenceScores[key]!==undefined?' done':''));
+    row.appendChild(d);
+  });
+}
+
+function renderPracticeSentence(){
+  // 切换句子时停止当前播放
+  if(ttsAudio){ ttsAudio.pause(); ttsAudio=null; ttsPlaying=false; }
+  $('btn-play').textContent = '🔊';
+
+  const s = S.curModule.sentences[S.curIndex];
+  const total = S.curModule.sentences.length;
+  $('pr-mod-name').textContent = S.curModule.name;
+  $('s-counter').textContent   = `${S.curIndex+1}/${total}`;
+  $('pr-english').textContent  = s.en;
+  $('pr-chinese').textContent  = s.cn;
+  $('score-panel').classList.remove('visible');
+  $('btn-playback').style.display='none';
+  S.audioBlob = null;
+  resetRecBtn();
+  renderDots();
+}
+
+$('pr-back').addEventListener('click',()=>{ openOverview(S.curModule); });
+$('btn-prev').addEventListener('click',()=>{
+  if(S.curIndex>0){S.curIndex--;renderPracticeSentence();}
+});
+$('btn-next').addEventListener('click',()=>{
+  if(S.curIndex<S.curModule.sentences.length-1){S.curIndex++;renderPracticeSentence();}
+  else toast('已是最后一句，请提交最佳录音');
+});
+
+// ════════════════════════════════════════════
+// SPEED CONTROL
+// ════════════════════════════════════════════
+document.querySelectorAll('.speed-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    S.ttsRate = parseFloat(btn.dataset.rate);
+  });
+});
+
+// ════════════════════════════════════════════
+// TTS — 支持播放 / 暂停 / 恢复
+// ════════════════════════════════════════════
+let ttsAudio = null;   // 当前 Audio 对象
+let ttsPlaying = false;
+
+$('btn-play').addEventListener('click', ()=>{
+  // 如果正在播放 → 暂停
+  if(ttsAudio && ttsPlaying){
+    ttsAudio.pause();
+    ttsPlaying = false;
+    $('btn-play').textContent = '▶️';
+    return;
+  }
+  // 如果已暂停同一句 → 恢复
+  if(ttsAudio && !ttsPlaying && !ttsAudio.ended){
+    ttsAudio.play();
+    ttsPlaying = true;
+    $('btn-play').textContent = '⏸';
+    return;
+  }
+  // 否则重新请求 TTS
+  speakText(S.curModule.sentences[S.curIndex].en, S.ttsRate);
+});
+
+async function speakText(text, rate=1.0){
+  // 停掉上一次播放
+  if(ttsAudio){ ttsAudio.pause(); ttsAudio=null; ttsPlaying=false; }
+
+  const btn = $('btn-play');
+  btn.textContent = '⏳';
+  try{
+    const tr = await fetch(
+      `https://${CFG.azureRegion}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`,
+      {method:'POST', headers:{'Ocp-Apim-Subscription-Key': CFG.azureKey}}
+    );
+    const token = await tr.text();
+    const prosody    = rate!==1.0 ? `<prosody rate="${rate}">` : '';
+    const prosodyEnd = rate!==1.0 ? `</prosody>` : '';
+    const ssml = `<speak version='1.0' xml:lang='en-US'>
+      <voice name='en-US-JennyNeural'>${prosody}${text}${prosodyEnd}</voice>
+    </speak>`;
+    const res = await fetch(
+      `https://${CFG.azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
+      {method:'POST', headers:{
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/ssml+xml',
+        'X-Microsoft-OutputFormat': 'audio-16khz-32kbitrate-mono-mp3',
+      }, body: ssml}
+    );
+    const buf  = await res.arrayBuffer();
+    const blob = new Blob([buf], {type:'audio/mpeg'});
+    const url  = URL.createObjectURL(blob);
+
+    ttsAudio         = new Audio(url);
+    ttsAudio.playbackRate = 1.0; // rate already baked in SSML
+    ttsPlaying       = true;
+    btn.textContent  = '⏸';
+
+    ttsAudio.play();
+    ttsAudio.onended = ()=>{
+      ttsPlaying = false;
+      btn.textContent = '🔊';
+      URL.revokeObjectURL(url);
+    };
+    ttsAudio.onerror = ()=>{
+      ttsPlaying = false;
+      btn.textContent = '🔊';
+    };
+  } catch(e){
+    btn.textContent = '🔊';
+    toast('播放失败，请检查网络');
+    console.error(e);
+  }
+}
+
+// ════════════════════════════════════════════
+// RECORDING
+// ════════════════════════════════════════════
+function resetRecBtn(){
+  const b=$('btn-record');
+  b.classList.remove('recording');
+  $('rec-icon').textContent='🎤';
+  $('rec-label').textContent='点击录音';
+}
+
+$('btn-record').addEventListener('click',async()=>{
+  if(S.isRecording){ stopRec(); } else { await startRec(); }
+});
+
+async function startRec(){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true, sampleRate:16000});
+    S.audioChunks=[];
+
+    // 优先选支持 16kHz 的格式
+    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=pcm')
+      ? 'audio/webm;codecs=pcm'
+      : MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+      ? 'audio/webm;codecs=opus'
+      : 'audio/webm';
+
+    S.mediaRecorder = new MediaRecorder(stream, {mimeType});
+    S.mediaRecorder.ondataavailable = e => { if(e.data.size>0) S.audioChunks.push(e.data); };
+    S.mediaRecorder.onstop = async ()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      const webmBlob = new Blob(S.audioChunks, {type: mimeType});
+      // 转 WAV 再发给 Azure（最高兼容性）
+      const wavBlob = await convertToWav(webmBlob);
+      S.audioBlob = wavBlob;
+      const url = URL.createObjectURL(webmBlob); // 回听用原始录音
+      const pb = $('btn-playback');
+      pb.style.display = 'flex';
+      pb.onclick = () => new Audio(url).play();
+      assessPron(wavBlob);
+    };
+    S.mediaRecorder.start(100); // 每100ms触发一次ondataavailable
+    S.isRecording=true;
+    $('btn-record').classList.add('recording');
+    $('rec-icon').textContent='⏹';
+    $('rec-label').textContent='点击停止';
+  }catch(e){
+    console.error('startRec error:', e);
+    toast('无法访问麦克风，请授权');
+  }
+}
+
+function stopRec(){
+  if(S.mediaRecorder&&S.isRecording){
+    S.mediaRecorder.stop(); S.isRecording=false;
+    resetRecBtn(); $('rec-label').textContent='评测中...';
+  }
+}
+
+// 把任意音频 Blob 转成 16kHz 单声道 WAV
+async function convertToWav(blob){
+  const arrayBuf = await blob.arrayBuffer();
+  const audioCtx = new AudioContext({sampleRate: 16000});
+  let decoded;
+  try {
+    decoded = await audioCtx.decodeAudioData(arrayBuf);
+  } catch(e) {
+    // 解码失败就直接用原 blob
+    console.warn('decodeAudioData failed, using original blob');
+    return blob;
+  }
+
+  // 降为单声道
+  const numSamples = decoded.length;
+  const pcm = new Float32Array(numSamples);
+  for(let ch = 0; ch < decoded.numberOfChannels; ch++){
+    const chData = decoded.getChannelData(ch);
+    for(let i = 0; i < numSamples; i++) pcm[i] += chData[i];
+  }
+  for(let i = 0; i < numSamples; i++) pcm[i] /= decoded.numberOfChannels;
+
+  // 写 WAV
+  const sampleRate = 16000;
+  const buf = new ArrayBuffer(44 + numSamples * 2);
+  const view = new DataView(buf);
+  const writeStr = (o, s) => { for(let i=0;i<s.length;i++) view.setUint8(o+i, s.charCodeAt(i)); };
+  writeStr(0,'RIFF');
+  view.setUint32(4, 36 + numSamples*2, true);
+  writeStr(8,'WAVE');
+  writeStr(12,'fmt ');
+  view.setUint32(16,16,true);
+  view.setUint16(20,1,true);   // PCM
+  view.setUint16(22,1,true);   // mono
+  view.setUint32(24,sampleRate,true);
+  view.setUint32(28,sampleRate*2,true);
+  view.setUint16(32,2,true);
+  view.setUint16(34,16,true);
+  writeStr(36,'data');
+  view.setUint32(40,numSamples*2,true);
+  let offset = 44;
+  for(let i=0;i<numSamples;i++){
+    const s = Math.max(-1,Math.min(1,pcm[i]));
+    view.setInt16(offset, s<0 ? s*0x8000 : s*0x7FFF, true);
+    offset += 2;
+  }
+  return new Blob([buf], {type:'audio/wav'});
+}
+
+// ════════════════════════════════════════════
+// PRONUNCIATION ASSESSMENT
+// ════════════════════════════════════════════
+async function assessPron(blob){
+  const sentence = S.curModule.sentences[S.curIndex];
+  loading(true,'发音评测中...');
+  try{
+    const tr = await fetch(
+      `https://${CFG.azureRegion}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`,
+      {method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azureKey}}
+    );
+    const token = await tr.text();
+
+    const cfgJson = JSON.stringify({
+      ReferenceText: sentence.en,
+      GradingSystem: 'HundredMark',
+      Granularity:   'Word',
+      EnableMiscue:  true,
+    });
+    const cfg64 = btoa(unescape(encodeURIComponent(cfgJson)));
+
+    const res = await fetch(
+      `https://${CFG.azureRegion}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`,
+      {method:'POST', headers:{
+        'Authorization':            `Bearer ${token}`,
+        'Content-Type':             'audio/wav; codecs=audio; samplerate=16000',
+        'Pronunciation-Assessment': cfg64,
+      }, body: blob}
+    );
+    const result = await res.json();
+    loading(false);
+    $('rec-label').textContent = '点击录音';
+
+    console.log('Azure result:', JSON.stringify(result));
+
+    if(!result.NBest || result.NBest.length === 0){
+      const status = result.RecognitionStatus || '未知';
+      if(status === 'NoMatch')               toast('未能识别语音，请清晰朗读后重试');
+      else if(status === 'InitialSilenceTimeout') toast('未检测到声音，请说话后再停止');
+      else toast('识别失败：' + status);
+      return;
+    }
+
+    const best  = result.NBest[0];
+
+    // 兼容平铺和嵌套两种格式
+    const pa = best.PronunciationAssessment || {
+      PronScore:         best.PronScore         ?? best.AccuracyScore ?? 0,
+      AccuracyScore:     best.AccuracyScore     ?? 0,
+      FluencyScore:      best.FluencyScore      ?? 0,
+      CompletenessScore: best.CompletenessScore ?? 0,
+    };
+
+    const words = (best.Words || []).map(w => ({
+      Word: w.Word,
+      PronunciationAssessment: w.PronunciationAssessment || {
+        AccuracyScore: w.AccuracyScore ?? 0,
+        ErrorType:     w.ErrorType    || 'None',
+      }
+    }));
+
+    const scoreVal = Math.round(pa.PronScore ?? pa.AccuracyScore ?? 0);
+    renderScorePanel(pa, words, scoreVal);
+
+    // 暂存录音和分数，提交时才写入正式进度
+    const rec = {blob, score: scoreVal, sentence: sentence.en, cn: sentence.cn,
+                 moduleId: S.curModule.id, sentenceIdx: S.curIndex};
+    S.recordings.push(rec);
+    if(!S.bestRec || scoreVal > S.bestRec.score) S.bestRec = rec;
+    S.scores.push(scoreVal);
+    $('btn-submit').disabled = false;
+
+  }catch(e){
+    loading(false);
+    $('rec-label').textContent = '点击录音';
+    console.error('assessPron error:', e);
+    toast('评测出错：' + e.message);
+  }
+}
+
+function renderScorePanel(pa, words, scoreVal){
+  const cls = scoreClass(scoreVal);
+  const circle = $('score-circle');
+  circle.className = 'score-circle '+cls;
+  $('score-big').textContent = scoreVal;
+
+  $('score-bars').innerHTML = [
+    {l:'准确度',v:Math.round(pa.AccuracyScore)},
+    {l:'流利度',v:Math.round(pa.FluencyScore)},
+    {l:'完整度',v:Math.round(pa.CompletenessScore)},
+  ].map(item=>{
+    const c = scoreClass(item.v);
+    const color = c==='great'?'var(--good)':c==='ok'?'var(--warn)':'var(--accent2)';
+    return `<div class="score-bar-row">
+      <div class="score-bar-lbl">${item.l}</div>
+      <div class="score-bar-bg"><div class="score-bar-fill" style="width:${item.v}%;background:${color}"></div></div>
+      <div class="score-bar-val" style="color:${color}">${item.v}</div>
+    </div>`;
+  }).join('');
+
+  if(words.length){
+    $('word-row').innerHTML = words.map(w=>{
+      const ws = Math.round(w.PronunciationAssessment?.AccuracyScore||0);
+      const ec = w.PronunciationAssessment?.ErrorType;
+      if(ec==='Omission') return `<span class="word-chip miss">${w.Word}</span>`;
+      return `<span class="word-chip ${scoreClass(ws)}" title="${ws}分">${w.Word}</span>`;
+    }).join('');
+  } else {
+    $('word-row').innerHTML='';
+  }
+
+  $('score-panel').classList.add('visible');
+}
+
+// ════════════════════════════════════════════
+// SUBMIT
+// ════════════════════════════════════════════
+// SUBMIT
+// ════════════════════════════════════════════
+$('btn-submit').addEventListener('click', async()=>{
+  if(!S.bestRec){ toast('请先录音'); return; }
+  loading(true,'上传录音...');
+  try{
+    const fd = new FormData();
+    fd.append('file', S.bestRec.blob, 'recording.wav');
+    fd.append('upload_preset', CFG.cloudPreset);
+    fd.append('folder', 'hr-recordings');
+    const up  = await fetch(`https://api.cloudinary.com/v1_1/${CFG.cloudName}/video/upload`,
+      {method:'POST', body:fd});
+    const upd = await up.json();
+    const audioUrl = upd.secure_url;
+
+    loading(true,'提交记录...');
+    const avg = S.scores.length
+      ? Math.round(S.scores.reduce((a,b)=>a+b,0) / S.scores.length) : 0;
+
+    await fetch(CFG.scriptUrl, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        userName:      S.name,
+        module:        S.curModule.name,
+        date:          new Date().toLocaleString('zh-CN'),
+        bestScore:     S.bestRec.score,
+        avgScore:      avg,
+        sentenceCount: S.scores.length,
+        bestSentence:  S.bestRec.sentence,
+        audioUrl,
+        allScores:     S.scores.join(', '),
+      })
+    });
+
+    // 提交后才把本次所有录音的分数写入正式进度
+    S.recordings.forEach(rec => {
+      const key = rec.moduleId + '_' + rec.sentenceIdx;
+      // 同一句有多次录音，保留最高分
+      if(S.sentenceScores[key] === undefined || rec.score > S.sentenceScores[key]){
+        S.sentenceScores[key] = rec.score;
+      }
+    });
+
+    // 打卡天数：每天第一次提交+1
+    const today = new Date().toDateString();
+    if(S.lastSubmitDate !== today){
+      S.streak++;
+      S.lastSubmitDate = today;
+    }
+    if(!S.completedModules.includes(S.curModule.id)){
+      S.completedModules.push(S.curModule.id);
+    }
+    saveLocal();
+    loading(false);
+
+    $('st-count').textContent = S.scores.length;
+    $('st-avg').textContent   = avg;
+    $('st-best').textContent  = S.bestRec.score;
+    showScreen('screen-complete');
+
+  }catch(e){
+    loading(false); toast('提交失败：' + e.message); console.error(e);
+  }
+});
+
+$('btn-done').addEventListener('click',()=>{ renderHome(); showScreen('screen-home'); });
+</script>
+</body>
+</html>
